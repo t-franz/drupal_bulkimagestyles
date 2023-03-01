@@ -1,0 +1,62 @@
+
+{#
+/**
+ * @file
+ * Theme override for a branding block.
+ *
+ * Each branding element variable (logo, name, slogan) is only available if
+ * enabled in the block configuration.
+ *
+ * Available variables:
+ * - site_logo: Logo for site as defined in Appearance or theme settings.
+ * - site_name: Name for site as defined in Site information settings.
+ * - site_slogan: Slogan for site as defined in Site information settings.
+ */
+#}
+
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'clearfix'
+  ]
+%}
+{% if mobile_logo %}
+  {% set classes = classes|merge(['responsive-logo']) %}
+{% endif %}
+
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    {% if site_logo %}
+      <a href="{{ path('<front>') }}" rel="home" class="site-logo">
+        {% if mobile_logo %}
+          <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" class="logo-full" width="277" height="170"/>
+          <img src="{{ base_path ~ directory }}/{{ mobile_logo }}" class="logo-mobile" alt="{{ 'Home'|t }}" width="" height="60"/>
+        {% else %}
+          <img src="/themes/custom/fus/logo-brambach.white.png" alt="{{ 'Home'|t }}" width="277" height="170" class="logo-white"/>
+          <img src="/themes/custom/fus/logo-brambach.png" alt="{{ 'Home'|t }}" width="277" height="170" class="logo-black"/>
+        {% endif %}
+      </a>
+    {% endif %}
+    {% if site_name %}
+      <div class="site-name">
+        <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
+      </div>
+    {% endif %}
+    {% if site_slogan %}
+      <div class="site-slogan">{{ site_slogan }}</div>
+    {% endif %}
+  {% endblock %}
+
+</div>
+
+
+
+
+

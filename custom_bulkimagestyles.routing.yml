@@ -1,0 +1,22 @@
+custom_bulkimagestyles.main_page_controller:
+  path: '/admin/config/media/image-styles/bulkimagestyles'
+  defaults:
+    _title: 'Bulk Image Styles'
+    _controller: '\Drupal\custom_bulkimagestyles\Controller\CustomBulkimagestylesController::build'
+  requirements:
+    _permission: 'administer image styles'
+custom_bulkimagestyles.generate:
+  path: '/admin/config/media/image-styles/bulkimagestyles/generate'
+  defaults:
+    _title: 'Generate Bulk Image Styles'
+    _controller: '\Drupal\custom_bulkimagestyles\Controller\CustomBulkimagestylesController::generate'
+  requirements:
+    _permission: 'administer image styles'
+
+custom_bulkimagestyles.form:
+  path: '/admin/config/media/image-styles/bulkimagestyles/form'
+  defaults:
+    _title: 'Bulk Image Styles Settings'
+    _form: 'Drupal\custom_bulkimagestyles\Form\SettingsForm'
+  requirements:
+    _permission: 'administer image styles'

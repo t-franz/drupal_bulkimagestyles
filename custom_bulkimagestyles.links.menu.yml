@@ -1,0 +1,12 @@
+custom_bulkimagestyles.admin:
+  title: 'Bulk Generate Image Styles'
+  description: 'Generates Images Styles'
+  parent: system.admin_config_media
+  route_name: custom_bulkimagestyles.main_page_controller
+  weight: -10
+# custom_bulkimagestyles.generate:
+#   title: 'Bulk Generate Image Styles | Generate'
+#   description: 'Generating Images Styles'
+#   parent: custom_bulkimagestyles.admin
+#   route_name: custom_bulkimagestyles.generate
+#   weight: 10
