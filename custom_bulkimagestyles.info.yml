@@ -2,6 +2,5 @@ name: Bulk Image Styles
 type: module
 description: Generate Image Styles
 package: Custom
-core: 8.x
 core_version_requirement: ^8 || ^9
 version: '1.2.0'
