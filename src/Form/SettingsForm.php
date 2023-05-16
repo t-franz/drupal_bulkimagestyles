@@ -5,6 +5,8 @@ namespace Drupal\custom_bulkimagestyles\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\breakpoint\BreakpointManagerInterface;
+use Drupal\crop\Entity\Crop;
+use Drupal\crop\Entity\CropType;
 
 /**
  * Provides a Bulk Image Styles form.
@@ -47,7 +49,7 @@ class SettingsForm extends FormBase {
         '#type' => 'select',
         '#options' => \Drupal::service('image_widget_crop.manager')->getAvailableCropType(CropType::getCropTypeNames()),
         '#empty_option' => '--',
-        '#description' => 'The type of crop to apply to your image. If your Crop Type not appear here, set an ratio below.',
+        '#description' => 'The type of crop to apply to your image. The machine_name must be of type "x_y". If your Crop Type does not appear here, set an ratio below. (The Crop-Type must already be in use in an image-style to be registered.)',
         '#states' => [
           'visible' => [
             ':input[name="scale"]' => ['value' => 'image_scale_and_crop'],
@@ -78,7 +80,7 @@ class SettingsForm extends FormBase {
       '#default_value' => '320, 375, 414, 768, 1024, 1220, 1440, 1680, 1920, 2560',
       '#size' => 60,
       '#maxlength' => 128,
-      '#description' => 'Bootstrap: 576, 768, 992, 1200, 1400<br>Content: 280, 320, 344, 371, 397, 595, 650<br>Half width: 130, 158, 167, 339, 525<br>Third width: 200, 340, 350, 380, 440, 530, 579',
+      '#description' => 'Bootstrap: 576, 768, 992, 1200, 1400<br>Content: 280, 320, 344, 371, 397, 595, 660<br>Half width: 130, 158, 167, 339, 525<br>Third width: 200, 340, 350, 380, 440, 530, 579',
     );
 
 
@@ -286,6 +288,7 @@ function _help() {
   (min-width:220px) calc((100vw - 1/2*mobile-gap - 40px) / 2)
   calc(100vw - 40px)
 
+  <i>(min-width:1400px) 660px, (min-width:786px) calc(50vw - 40px), calc(100vw - 40px)</i>
   <i>(min-width:1140px) 525px, (min-width:768px) calc((100vw - 80px) / 2), (min-width:220px) calc((100vw - 50px) / 2), calc(100vw - 40px)</i>
 
   Width: 130, 158, 167, 339, 525
